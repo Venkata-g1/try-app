@@ -19,7 +19,7 @@ def predict():
     prediction = model.predict(final_features)
 
     output = round(prediction[0], 10)
-    if(output >= .80):
+    if(output >= .70):
         return ("please contact a doctor")
 
     return render_template('index.html', prediction_text='Affecting with heart disease rate : {}'.format(output))
