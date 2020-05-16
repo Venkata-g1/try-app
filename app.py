@@ -19,10 +19,9 @@ def predict():
     prediction = model.predict(final_features)
 
     output = round(prediction[0], 2)
-    if(output >= .70):
-        return ("please contact a doctor")
+    
 
-    return render_template('index.html', prediction_text='Affecting with heart disease rate : {}'.format(output))
+    return render_template('index.html', prediction_text='Affecting with heart disease rate : {}'.format(round(prediction[0], 2)))
 
 @app.route('/predict_api',methods=['POST'])
 def predict_api():
@@ -33,7 +32,7 @@ def predict_api():
     prediction = model.predict([np.array(list(data.values()))])
 
     output = round(prediction[0], 2)
-    return jsonify(output)
+    return jsonify(round(prediction[0], 2))
 
 if __name__ == "__main__":
     app.run(debug=True)
