@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html >
+<head>
+<style>
+h1 {color:red;}
+p {color:brown;}
+</style>
+</head>
+<body style="background-color:powderblue;">
+ <div class="login">
+	<h1>Predict Heart disease Rate</h1>
+
+     <!-- Main Input For Receiving Query to our ML -->
+    <form action="{{ url_for('predict')}}"method="post">
+	<label for="age"> age: age in years:                </label>
+        <input type="number" id="age" name="age"><br><br>
+        
+	<label for="sex">sex: sex (1 = male; 0 = female)    </label>
+        <input type="number" id="sex" name="sex"><br><br>
+	
+	<label for="chest pain type">chest pain type:                    </label>
+        <input type="number" id="chest pain type" name="chest pain type"><br><br>
+	
+	<label for="resting bp s">resting blood pressure</label>
+        <input type="number" id="resting bp s" name="resting bp s"><br><br>
+	
+	<label for="cholesterol">serum cholestoral  in mg/dl   </label>
+        <input type="number" id="cholesterol" name="cholesterol"><br><br>
+	
+	<label for="fasting blood sugar">fasting blood sugar             </label>
+        <input type="number" id="fasting blood sugar" name="fasting blood sugar"><br><br>
+	
+	<label for="resting ecg">restecg:resting electrocardiographic results  </label>
+        <input type="number" id="resting ecg" name="resting ecg"><br><br>
+	
+	<label for="max heart rate">maximum heart rate achieved     </label>
+        <input type="number" id="max heart rate" name="max heart rate"><br><br>
+	
+	<label for="exercise angina">exercise induced angina (1 = yes; 0 = no)</label>
+        <input type="number" id="exercise angina" name="exercise angina" required="required"><br><br>
+	
+	<label for="oldpeak">ST depression induced by exercise </label>
+	<input type="number" min="0.0" max="9.90" step="any" id="oldpeak" name="oldpeak" required="required"><br><br>
+
+        
+	<label for="ST slope">slope of exercise ST segment             </label>
+        <input type="number" id="ST slope" name="ST slope" required="required"><br><br>
+	
+	<button type="submit" class="btn btn-primary btn-block btn-large">Predict</button>
+    </form>
+<h2>INSRUCTIONS</h2>
+<p>age: age in years</p>
+<p></p>
+
+<p> sex: sex (1 = male; 0 = female)</p>
+<p></p>
+
+<p>chest pain type</p>
+<p>-- Value 1: typical angina::- Angina pectoris or typical angina is the discomfort that is noted when the heart does not get enough blood or oxygen.</p>
+<p>-- Value 2: atypical angina ::- unexplained chest pain there are no symptoms for this.</p>
+<p>-- Value 3: non-anginal pain ::- A chest pain is very likely nonanginal if its duration is over 30 minutes or less than 5 seconds.</p>
+<p>-- Value 4: asymptomatic ::- "silent" (asymptomatic) myocardial ischemia is the most common manifestation of coronary heart disease.</p>
+<p></p>
+
+<p>resting bp s::- the value of resting blood pressure</p>
+<p></p>
+
+<p>cholesterol ::- serum cholestoral  in mg/dl</p>
+<p></p>
+
+<p>fasting blood sugar ::- (fasting blood sugar > 120 mg/dl) (1 = true; 0 = false)</p>
+<p></p>
+
+<p>resting ecg::- resting electrocardiographic results</p>
+<p>-- Value 0: normal</p>
+<p>-- Value 1: having ST-T wave abnormality (T wave inversions and/or ST elevation or depression of > 0.05 mV)</p>
+<p>-- Value 2: showing probable or definite left ventricular hypertrophy by Estes' criteria</p>
+<p></p>
+
+<p>max heart rate::- the value of maximum heart rate achieved</p>
+<p></p>
+
+<p>exercise angina ::- exercise induced angina (1 = yes; 0 = no), Angina is chest pain or discomfort caused when your heart muscle doesn't get enough oxygen-rich blood.</p>
+<p></p>
+
+<p>oldpeak ::-ST depression induced by exercise(number or float value)</p>
+<p></p>
+
+<p>ST slope::-slope of exercise ST segment</p>
+<p>-- Value 1: upsloping </p>
+<p>-- Value 2: flat </p>
+<p>-- Value 3: downsloping </p>
+
+
+
+   <br>
+   <br>
+   {{ prediction_text }}
+
+ </div>
+
+
+</body>
+</html>
