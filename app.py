@@ -18,7 +18,7 @@ def predict():
     final_features = [np.array(int_features)]
     prediction = model.predict(final_features)
 
-    output = round(prediction[0], 10)
+    output = round(prediction[0], 2)
     if(output >= .70):
         return ("please contact a doctor")
 
